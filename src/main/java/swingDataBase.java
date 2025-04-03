@@ -9,6 +9,8 @@
  */
 import java.sql.*;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 public class swingDataBase extends javax.swing.JFrame {
     public Connection conn;
@@ -26,17 +28,6 @@ public class swingDataBase extends javax.swing.JFrame {
     public swingDataBase() {
         initComponents();
        setTitle("Login");
-        try {
-        connectionDB(); // Appel de la méthode de connexion
-         this.dispose(); // fermer le fenêtre de la login
-         
-         java.awt.EventQueue.invokeLater(() -> { // Correction de la faute de frappe
-            new dashboard().setVisible(true);
-        });
-    } 
-        catch (ClassNotFoundException | SQLException e) {
-        JOptionPane.showMessageDialog(this, "Erreur de connexion : " + e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
-    }
  }
     
     private void connectionDB() throws ClassNotFoundException, SQLException {
@@ -59,7 +50,9 @@ public class swingDataBase extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
+        jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -67,54 +60,89 @@ public class swingDataBase extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+
+        jScrollPane1.setViewportView(jEditorPane1);
+
+        jLabel6.setText("jLabel6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 153, 153));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
-        jLabel1.setText("LOGIN");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
         jTextField1.setName("IDLog"); // NOI18N
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 290, -1));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 255, 204));
         jLabel2.setText("ID");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 255, 153));
         jLabel3.setText("Password");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
+        jButton1.setBackground(new java.awt.Color(102, 255, 0));
         jButton1.setText("SEND");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 100, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 100, 40));
 
         jPasswordField1.setText("jPasswordField1");
         jPasswordField1.setName("mdpLog"); // NOI18N
         getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 290, -1));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 255, 204));
         jLabel4.setText("Name");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
         jTextField2.setName("NameLog"); // NOI18N
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 290, -1));
 
+        jPanel1.setBackground(new java.awt.Color(51, 255, 51));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
+        jLabel5.setText("Connection for you  ");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, -20, 260, 130));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 290, 420));
+
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel1.setText("LOGIN");
+        jPanel2.add(jLabel1);
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 240, 70));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     String username = jTextField2.getText(); // Maintenant cela fonctionnera
+     String username = jTextField2.getText(); 
     String password = new String(jPasswordField1.getPassword());
     String id = jTextField1.getText();
     
+    // Vérification des champs vides
+    if(username.isEmpty() || password.isEmpty() || id.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Veuillez remplir tous les champs", "Erreur", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
     
     try {
+        // Établir la connexion d'abord
+        connectionDB();
+        
+        // Ensuite exécuter la requête
         String query = "SELECT * FROM LOGIN WHERE IDLog = ? AND nameLog = ? AND password = ?";
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setString(1, id);
@@ -124,14 +152,26 @@ public class swingDataBase extends javax.swing.JFrame {
         ResultSet rs = stmt.executeQuery();
         if (rs.next()) {
             JOptionPane.showMessageDialog(this, "Login réussi!");
+            
+            // Fermer la fenêtre de login
+            this.dispose();
+            
+            // Ouvrir le dashboard
+            java.awt.EventQueue.invokeLater(() -> {
+                new dashboard().setVisible(true);
+            });
         } 
         else {
-            JOptionPane.showMessageDialog(this, "Échec du login", "Erreur", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Identifiants incorrects", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     } 
     catch (SQLException e) {
         JOptionPane.showMessageDialog(this, "Erreur DB: " + e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
-    }      // TODO add your handling code here:
+    } 
+    catch (ClassNotFoundException ex) {
+        JOptionPane.showMessageDialog(this, "Driver JDBC non trouvé", "Erreur", JOptionPane.ERROR_MESSAGE);
+        Logger.getLogger(swingDataBase.class.getName()).log(Level.SEVERE, null, ex);
+    }  // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -171,11 +211,17 @@ public class swingDataBase extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables

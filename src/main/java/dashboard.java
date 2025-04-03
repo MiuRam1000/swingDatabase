@@ -7,9 +7,11 @@
  *
  * @author Andrianantenaina
  */
+import java.awt.Color;
 import java.sql.*;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 public class dashboard extends javax.swing.JFrame {
@@ -23,7 +25,9 @@ public class dashboard extends javax.swing.JFrame {
      */
     public dashboard() {
         initComponents();
+        
         setTitle("Dashboard");
+        
         
          jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
          public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -71,16 +75,23 @@ public class dashboard extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 153, 51));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setBackground(new java.awt.Color(0, 255, 153));
         jButton1.setText("CREATE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +100,7 @@ public class dashboard extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 120, 40));
 
+        jButton2.setBackground(new java.awt.Color(51, 255, 153));
         jButton2.setText("EDIT");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +109,7 @@ public class dashboard extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 540, 120, 40));
 
+        jButton3.setBackground(new java.awt.Color(255, 0, 51));
         jButton3.setText("DELETE");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,39 +117,28 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 540, 110, 40));
-
-        jTextField1.setText("jTextField1");
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 240, -1));
-
-        jTextField2.setText("jTextField2");
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 240, -1));
-
-        jTextField3.setText("jTextField3");
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 240, -1));
-
-        jTextField4.setText("jTextField4");
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 240, -1));
-
-        jPasswordField1.setText("jPasswordField1");
         getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, -1));
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 204, 204));
         jLabel1.setText("Name");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        jLabel2.setText("ID");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
-
-        jLabel3.setText("Email");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
-
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 204, 204));
         jLabel4.setText("Birthday");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 204, 204));
         jLabel5.setText("Password");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
 
+        jTable1.setBackground(new java.awt.Color(0, 204, 204));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -156,6 +158,7 @@ public class dashboard extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTable1.setGridColor(new java.awt.Color(0, 204, 102));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -163,7 +166,47 @@ public class dashboard extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 480, 470));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 480, 490));
+
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel6.setText("ID");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel3.setText("Email");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
+
+        jMenuBar1.setBackground(new java.awt.Color(0, 204, 204));
+        jMenuBar1.setOpaque(true);
+
+        jMenu1.setText("File");
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Quitter");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jCheckBoxMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+
+        jMenuItem1.setText("ChangeColor");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -198,61 +241,52 @@ public class dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 // methode de mise à jour
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int selectedRow =  jTable1.getSelectedRow();
+           if(jTextField1.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Veuillez sélectionner un étudiant");
+        return;
+    }
+    
+    try {
+        int id = Integer.parseInt(jTextField1.getText()); // Prend l'ID du champ texte
+        String name = jTextField2.getText();
+        String email = jTextField3.getText();
+        String birthday = jTextField4.getText();
+        String password = new String(jPasswordField1.getPassword());
         
-        if(selectedRow == -1){
-             JOptionPane.showMessageDialog(this, "Veuillez sélectionner un étudiant à modifier");
-             return;
+        String sql = "UPDATE USERS SET Name=?, Email=?, Birthday=?, Password=? WHERE ID=?";
+        
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, name);
+        pstmt.setString(2, email);
+        pstmt.setString(3, birthday);
+        pstmt.setString(4, password);
+        pstmt.setInt(5, id);
+        
+        int rows = pstmt.executeUpdate();
+        pstmt.close();
+        
+        if(rows > 0) {
+            JOptionPane.showMessageDialog(this, "Mise à jour réussie!");
+            refreshTable();
+        } else {
+            JOptionPane.showMessageDialog(this, "Aucun enregistrement modifié");
         }
-        
-        try{
-             int id = Integer.parseInt(jTable1.getValueAt(selectedRow, 0).toString()); // récupération de l'id de la ligne selectionnée
-             
-              String newName = jTextField2.getText();
-              String newEmail = jTextField3.getText();
-              String newBirthday = jTextField4.getText();
-              String newPassword = new String(jPasswordField1.getPassword());
-              
-               if(newName.isEmpty() || newEmail.isEmpty() || newBirthday.isEmpty() || newPassword.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Tous les champs doivent être remplis");
-                return;
-            }
-                String sql = "UPDATE USERS SET Name=?, Email=?, Birthday=?, Password=? WHERE ID=?";
-                
-                // preparation de mysql
-                 PreparedStatement pstmt = conn.prepareStatement(sql);
-                 pstmt.setString(1, newName);
-                 pstmt.setString(2, newEmail);
-                 pstmt.setString(3, newBirthday);
-                 pstmt.setString(4, newPassword);
-                 pstmt.setInt(5, id);
-                 
-                 // le mise à jour
-                 int Updated = pstmt.executeUpdate();
-        
-                if(Updated > 0) {
-                    JOptionPane.showMessageDialog(this, "Étudiant mis à jour avec succès !");
-                    refreshTable(); // Rafraîchir le tableau
-        }
-        
-                 
-                 pstmt.close();
-     }
-        catch(SQLException e){
-                JOptionPane.showMessageDialog(this, "Erreur de base de données: " + e.getMessage());
-        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erreur: " + e.getMessage());
+        e.printStackTrace();
+    }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-       int row = jTable1.getSelectedRow();
-         if (row >= 0) {
-        // Remplit les champs avec les valeurs de la ligne sélectionnée
+      int row = jTable1.getSelectedRow();
+    if (row >= 0) {
         jTextField1.setText(jTable1.getValueAt(row, 0).toString()); // ID
         jTextField2.setText(jTable1.getValueAt(row, 1).toString()); // Name
         jTextField3.setText(jTable1.getValueAt(row, 2).toString()); // Email
         jTextField4.setText(jTable1.getValueAt(row, 3).toString()); // Birthday
-    } // TODO add your handling code here:
+        jPasswordField1.setText(""); // Réinitialise le mot de passe
+    }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -284,6 +318,32 @@ public class dashboard extends javax.swing.JFrame {
            }
          
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        int response = JOptionPane.showConfirmDialog(
+        this, 
+        "Voulez-vous vraiment quitter?", 
+        "Confirmation", 
+        JOptionPane.YES_NO_OPTION);
+    
+    if(response == JOptionPane.YES_OPTION) {  // Correction ici
+        JOptionPane.showMessageDialog(
+            this,  // Ajout du parentComponent
+            "Au revoir");  // Orthographe corrigée
+        System.exit(0);
+   }
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+                      Color color = new Color(
+                     (int)(Math.random()*255),
+                    (int)(Math.random()*255),
+                   (int)(Math.random()*255));
+              // Application de couleur au fond
+         getContentPane().setBackground(color);
+        
+                 // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
        
           
 //}
@@ -322,19 +382,29 @@ public class dashboard extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+    } 
+        catch (Exception e) {
+        e.printStackTrace();
+}
+        try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } 
+        catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } 
+        catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } 
+        catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } 
+        catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -345,17 +415,23 @@ public class dashboard extends javax.swing.JFrame {
                 new dashboard().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
